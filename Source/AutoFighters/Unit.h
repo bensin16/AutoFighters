@@ -7,7 +7,6 @@
 #include "Unit.generated.h"
 
 class AHexTile;
-class UBoxComponent;
 
 UENUM()
 enum class EUnitState : uint8
@@ -37,8 +36,6 @@ protected:
 	UPROPERTY()
 	EUnitState CurrentState;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	UBoxComponent* HitBox;
 
 public:	
 	// Sets default values for this actor's properties
@@ -49,7 +46,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
-	void OnClick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
+	void OnClick(AActor* TouchedActor, FKey ButtonPressed);
 
 public:	
 	// Called every frame

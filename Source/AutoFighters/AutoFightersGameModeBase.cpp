@@ -14,8 +14,8 @@ AAutoFightersGameModeBase::AAutoFightersGameModeBase()
 	HexGridHeight = 5;
 	HexGridWidth = 5;
 
-	//DefaultPawnClass = APlayerPawn::StaticClass();
-	//PlayerControllerClass = AMousePlayerController::StaticClass();
+	DefaultPawnClass = APlayerPawn::StaticClass();
+	PlayerControllerClass = AMousePlayerController::StaticClass();
 }
 
 void AAutoFightersGameModeBase::BeginPlay()

@@ -15,8 +15,9 @@ AUnit::AUnit()
 	// set up root component and mesh component
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	UnitMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("UnitMesh"));
-	UnitMesh->OnClicked.AddDynamic(this, &AUnit::OnClick);
 	UnitMesh->SetupAttachment(RootComponent);
+
+
 
 	// assuming idle is the starting state
 	CurrentState = EUnitState::IDLE;
@@ -28,13 +29,13 @@ void AUnit::BeginPlay()
 {
 	Super::BeginPlay();
 	//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("unit begin play"));
+
+	OnClicked.AddDynamic(this, &AUnit::OnClick);
 }
 
-//https://forums.unrealengine.com/t/onclicked-adddynamic-this-function-error/384223/2
-//to understand params
-void AUnit::OnClick(UPrimitiveComponent* ClickedComp, FKey ButtonPressed)
+void AUnit::OnClick(AActor* TouchedActor, FKey ButtonPressed)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("unit begin play"));
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TouchedActor->GetName());
 }
 
 // Called every frame

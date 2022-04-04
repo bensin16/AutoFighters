@@ -20,6 +20,10 @@ public:
 public:
 	// Called to bind functionality to input
 	virtual void SetupInputComponent() override;
+
+	UFUNCTION()
 	void LeftMouseDown();
+
+	UFUNCTION()
 	void LeftMouseUp();
 };

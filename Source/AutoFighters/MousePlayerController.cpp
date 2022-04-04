@@ -5,16 +5,17 @@
 
 AMousePlayerController::AMousePlayerController()
 {
-	bEnableClickEvents = true;
 	bShowMouseCursor = true;
+	bEnableClickEvents = true;
+	bEnableMouseOverEvents = true;
 }
 
 void AMousePlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("LeftMouse", IE_Pressed, this, &AMousePlayerController::LeftMouseDown);
-	InputComponent->BindAction("LeftMouse", IE_Released, this, &AMousePlayerController::LeftMouseUp);
+	//InputComponent->BindAction("LeftMouse", IE_Pressed, this, &AMousePlayerController::LeftMouseDown);
+	//InputComponent->BindAction("LeftMouse", IE_Released, this, &AMousePlayerController::LeftMouseUp);
 }
 
 void AMousePlayerController::LeftMouseDown()
