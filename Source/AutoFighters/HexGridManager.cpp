@@ -120,5 +120,9 @@ FIntPoint AHexGridManager::FindNearestUnit(FIntPoint startingLoc)
 		FIntPoint(-1, 0),FIntPoint(-1, 1), FIntPoint(0, 1),
 	};
 
-	return FIntPoint();
+	TArray<AHexTile*> visited;
+
+	
+
+	return FIntPoint(0, 0);
 }

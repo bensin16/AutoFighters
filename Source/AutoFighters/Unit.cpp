@@ -3,6 +3,8 @@
 
 #include "Unit.h"
 
+#include "HexTile.h"
+
 #include "Components/BoxComponent.h"
 
 
@@ -16,8 +18,6 @@ AUnit::AUnit()
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	UnitMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("UnitMesh"));
 	UnitMesh->SetupAttachment(RootComponent);
-
-
 
 	// assuming idle is the starting state
 	CurrentState = EUnitState::IDLE;
@@ -35,7 +35,8 @@ void AUnit::BeginPlay()
 
 void AUnit::OnClick(AActor* TouchedActor, FKey ButtonPressed)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TouchedActor->GetName());
+	FIntPoint loc = OccupyingTile->FindNearestUnit();
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, loc.ToString());
 }
 
 // Called every frame

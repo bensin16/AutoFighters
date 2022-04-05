@@ -25,6 +25,7 @@ void AAutoFightersGameModeBase::BeginPlay()
 	SpawnHexGrid();
 	SpawnUnit(0, 1);
 	SpawnUnit(3, 3);
+
 }
 
 void AAutoFightersGameModeBase::SpawnHexGrid()

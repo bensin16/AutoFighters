@@ -42,12 +42,21 @@ protected:
 	UStaticMeshComponent* TileMesh;
 
 	UPROPERTY()
-	AHexGridManager* TileManager;
+	AHexGridManager* GridManager;
 
 public:	
 	// Sets default values for this actor's properties
 	AHexTile();
 
-	void SetTileManager(AHexGridManager* tm) { TileManager = tm; }
+	UFUNCTION()
+	void SetTileManager(AHexGridManager* tm) { GridManager = tm; }
 
+	UFUNCTION()
+	FIntPoint FindNearestUnit();
+
+protected:
+	UFUNCTION()
+	void OnClick(AActor* TouchedActor, FKey ButtonPressed);
+
+	virtual void BeginPlay() override;
 };

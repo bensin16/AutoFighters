@@ -2,6 +2,9 @@
 
 
 #include "HexTile.h"
+
+#include "HexGridManager.h"
+
 #include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 
@@ -16,4 +19,19 @@ AHexTile::AHexTile()
 	TileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TileMesh"));
 	TileMesh->SetupAttachment(RootComponent);
 
+}
+
+void AHexTile::BeginPlay()
+{
+	OnClicked.AddUniqueDynamic(this, &AHexTile::OnClick);
+}
+
+void AHexTile::OnClick(AActor* TouchedActor, FKey ButtonPressed)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("yo"));
+}
+
+FIntPoint AHexTile::FindNearestUnit()
+{
+	return GridManager->FindNearestUnit(TileIndex);
 }
